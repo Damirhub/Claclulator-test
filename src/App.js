@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from "./components/Header";
-import { Home } from "./components/Home";
+import { Display } from "./components/Display";
+import { Calculator } from "./components/Calculator";
 
 
 class App extends React.Component {
@@ -9,15 +9,15 @@ class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      homeLink: 0,
+      homeValue: 0,
       results: 0
     }
   }
 
 
-  changeLink (newLink) {
+  changedValue (newValue) {
     this.setState({
-      homeLink: newLink
+      homeValue: newValue
     })
   }
 
@@ -29,10 +29,6 @@ class App extends React.Component {
   
 
 
-  onGreet() {
-    alert("greeeety")
-  }
-
 
   render() {   
 
@@ -40,24 +36,21 @@ class App extends React.Component {
       <div className = "container ">
         <div className = "row">
           <div className = "col-xs-10 col-xs-offset-1">
-            <Header homeLink = {this.state.homeLink}/>       
+            <Display homeValue = {this.state.homeValue}/>       
           </div>
           <div className = "col-xs-10 col-xs-offset-1">
-          <Header results = {this.state.results}/>       
+          <Display results = {this.state.results}/>       
           </div>
         </div>
 
 
         <div className = "row">
           <div className="col-xs-10 col-xs-offset-1">
-              <Home 
+              <Calculator 
                   results = {this.results.bind(this)}
-                  changeLink = {this.changeLink.bind(this)}
-                  homeLink = {this.state.homeLink}
-                  initialLinkName = {this.state.homeLink}
+                  changedValue = {this.changedValue.bind(this)}    
                 >
-
-              </Home>
+              </Calculator>
                                        
         </div>
         </div>

@@ -1,9 +1,8 @@
 import React from "react";
 
-import './Home.css';
+import './Calculator.css';
 
-
-export class Home extends React.Component {
+export class Calculator extends React.Component {
 
 constructor(props) {
   super()
@@ -11,23 +10,23 @@ constructor(props) {
     changed: "",
     memo : '',
     rezult: '',
-    flip: true
   }
 }
 
-  onDisplay(){
-    this.props.changeLink(this.state.changed)
-  }
 
-  onDisplayRez(){
-     this.props.results(this.state.rezult)
-   }
+  onDisplay(){
+    this.props.changedValue(this.state.changed)
+  }
 
   onHandleChange(event) {
     this.setState({
       changed : this.state.changed + event.target.value 
       }, () =>  { this.onDisplay(); 
     })
+  }
+
+  onDisplayRez(){
+    this.props.results(this.state.rezult)
   }
 
 
@@ -120,12 +119,11 @@ constructor(props) {
     const rezult =  this.state.memo 
     this.setState ({ 
       rezult : rezult,
-      flip: true,
       status :rezult
     },  
     //() => this.onHandleChange(this.state.memo)) 
-    () => this.alerted(),   
-    () => this.onDisplayRez())
+    () => this.alerted())
+    //,() => this.onDisplayRez())
   }
   
 
@@ -150,8 +148,6 @@ constructor(props) {
       />
       }
     )
-      
-      
 
     return(
       <div>
@@ -193,7 +189,11 @@ constructor(props) {
            onClick = { (event) => this.onHandleChange(event)} 
            />
 
-          <div className = "btn btn-success btns">=</div>
+          <div className = "btn btn-success btns"
+          onClick = { () =>  this.alerted() }
+          >=</div>
+
+
           <input type = 'button'
            value = {'/'}
            className = "btn btn-danger btns" 
