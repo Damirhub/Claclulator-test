@@ -8,11 +8,9 @@ constructor(props) {
   super()
   this.state = {
     changed: "",
-    memo : '',
-    rezult: '',
+    memo : ''
   }
 }
-
 
   onDisplay(){
     this.props.changedValue(this.state.changed)
@@ -26,9 +24,8 @@ constructor(props) {
   }
 
   onDisplayRez(){
-    this.props.results(this.state.rezult)
+    this.props.results(this.state.memo)
   }
-
 
   operation(event) {
 
@@ -57,7 +54,7 @@ constructor(props) {
 
 
   addition() {
-        const addedNumber =  Number(this.state.rezult) + Number(this.state.changed)  
+        const addedNumber =  Number(this.state.memo) + Number(this.state.changed)  
         this.setState ({
           memo : addedNumber,
           changed: ' '
@@ -66,8 +63,8 @@ constructor(props) {
   }
 
   deduction() {
-      if( this.state.rezult !== ''){
-        const deductedNumber =  Number(this.state.rezult) - Number(this.state.changed)  
+      if( this.state.memo !== ''){
+        const deductedNumber =  Number(this.state.memo) - Number(this.state.changed)  
         this.setState ({
           memo : deductedNumber,
           changed: ' '
@@ -87,9 +84,9 @@ constructor(props) {
   }
 
   multiply() {
-    if( this.state.rezult !== 0 && this.state.rezult !== '' ){
-          const multipliedNumber =  Number(this.state.rezult) * Number(this.state.changed)  
-         console.log(" Multiplied rez: " + this.state.rezult)
+    if( this.state.memo !== 0 && this.state.memo !== '' ){
+          const multipliedNumber =  Number(this.state.memo) * Number(this.state.changed)  
+         console.log(" Multiplied rez: " + this.state.memo)
           this.setState ({
             memo : multipliedNumber,
             changed: ' '
@@ -100,11 +97,11 @@ constructor(props) {
   }
 
   division() {
-    if( this.state.rezult !== 0 && this.state.rezult !== '' && this.state.changed !== '' )
+    if( this.state.memo !== 0 && this.state.memo !== '' && this.state.changed !== '' )
     {
-          const devidedNumber =  Number(this.state.rezult) / Number(this.state.changed)  
+          const devidedNumber =  Number(this.state.memo) / Number(this.state.changed)  
           console.log(" Divided changed: " + this.state.changed)
-         console.log(" Divided rez: " + this.state.rezult)
+         console.log(" Divided rez: " + this.state.memo)
           this.setState ({
             memo : devidedNumber,
             changed: ' '
@@ -116,20 +113,21 @@ constructor(props) {
 
 
   resulted = () => {
-    const rezult =  this.state.memo 
+    const memo =  this.state.memo 
     this.setState ({ 
-      rezult : rezult,
-      status :rezult
+      memo : memo,
     },  
-    //() => this.onHandleChange(this.state.memo)) 
-    () => this.alerted())
-    //,() => this.onDisplayRez())
+    () => {
+      ( this.alerted() ); 
+      ( this.onDisplayRez() )
+      }
+    )
   }
   
 
   alerted() {
     console.log(" Rezultat memo " + this.state.rezult)
-    this.onDisplayRez();
+  //  this.onDisplayRez();
   }
   
 

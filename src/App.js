@@ -14,7 +14,6 @@ class App extends React.Component {
     }
   }
 
-
   changedValue (newValue) {
     this.setState({
       homeValue: newValue
@@ -27,8 +26,6 @@ class App extends React.Component {
     })
   }
   
-
-
 
   render() {   
 
@@ -50,8 +47,7 @@ class App extends React.Component {
                   results = {this.results.bind(this)}
                   changedValue = {this.changedValue.bind(this)}    
                 >
-              </Calculator>
-                                       
+              </Calculator>                              
         </div>
         </div>
       </div>
