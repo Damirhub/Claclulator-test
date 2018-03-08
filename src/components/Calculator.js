@@ -8,7 +8,8 @@ constructor(props) {
   super()
   this.state = {
     changed: "",
-    memo : ''
+    memo : '',
+    //doOperation: 6
   }
 }
 
@@ -29,7 +30,13 @@ constructor(props) {
 
   operation(event) {
 
-    switch (event.target.value) {
+   // switch (event.target.value) 
+   this.setState ({
+    doOperation : event.target.value
+  })
+   // switch (this.state.doOperation) 
+    switch (this.state.doOperation ? this.state.doOperation : event.target.value)
+     {
 
       case ('+') : 
         this.addition();
@@ -50,6 +57,8 @@ constructor(props) {
       default : null;
        break;
     }
+
+    
   }
 
 
@@ -84,7 +93,8 @@ constructor(props) {
   }
 
   multiply() {
-    if( this.state.memo !== 0 && this.state.memo !== '' ){
+    if( this.state.memo !== 0 && this.state.memo !== '' )
+      {
           const multipliedNumber =  Number(this.state.memo) * Number(this.state.changed)  
          console.log(" Multiplied rez: " + this.state.memo)
           this.setState ({
